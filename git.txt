@@ -1,8 +1,0 @@
-cd Stepik---auto-tests-
-git add test_abs_project.py
-git commit -m "добавление прошлых уроков"
-git status   - проверка статуса
-git log      - проверка историй загрузки
-git push origin master
-
-Industrial-project
