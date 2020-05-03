@@ -9,7 +9,10 @@ class LoginPageLocators():
     FORM_LOG_IN = (By.ID, "login_form")
     FORM_REG = (By.ID, "register_form")
 
-class ProductPageLocators():
-    ADD_IN_BASKET = (By.CSS_SELECTOR, "button.btn-add-to-basket")
-    ADD_IN_LINK = (By.CSS_SELECTOR, "button.btn-add-to-basket")
-
+class ProductPageLocators:
+    BUTTON_ADD_TO_CART = (By.CLASS_NAME, "btn-add-to-basket")
+    ALERT_ADDED_TO_CART = (By.CSS_SELECTOR, "div.alertinner strong")
+    ALERT_CART_STATUS = (By.CSS_SELECTOR, ".alert-noicon.alert-info p")
+    PRICE_VALUE = (By.CLASS_NAME, "price_color")
+    PRODUCT_NAME = (By.TAG_NAME, "h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
