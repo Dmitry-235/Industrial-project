@@ -3,17 +3,8 @@ import pytest
 from pages.basket_page import BasketPage
 from pages.product_page import ProductPage
 
-#links = [
-#    "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019",
-#    "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
-#]
-
-#offer_link_template = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
-#offer_links = [f"{offer_link_template}{i}" for i in range(0, 10)]
-
 link = ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"]
 
-#@pytest.mark.parametrize("link", links)
 @pytest.mark.parametrize("link", link)
 @pytest.mark.need_review
 def test_user_can_add_product_to_basket(browser, link: str) -> None:
@@ -23,7 +14,6 @@ def test_user_can_add_product_to_basket(browser, link: str) -> None:
     product_page.should_be_present_in_cart()
     product_page.should_check_overall_cost()
 
-#@pytest.mark.parametrize("link", offer_links)
 @pytest.mark.parametrize("link", link)
 @pytest.mark.need_review
 def test_guest_can_add_product_to_basket(browser, link: str) -> None:
