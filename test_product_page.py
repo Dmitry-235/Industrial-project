@@ -1,5 +1,6 @@
 import pytest
 
+from pages.basket_page import BasketPage
 from pages.product_page import ProductPage
 
 #links = [
@@ -14,7 +15,8 @@ link = ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?pro
 
 #@pytest.mark.parametrize("link", links)
 @pytest.mark.parametrize("link", link)
-def test_guest_can_add_product_to_cart(browser, link: str) -> None:
+@pytest.mark.need_review
+def test_user_can_add_product_to_basket(browser, link: str) -> None:
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.add_to_cart(True)
@@ -23,7 +25,8 @@ def test_guest_can_add_product_to_cart(browser, link: str) -> None:
 
 #@pytest.mark.parametrize("link", offer_links)
 @pytest.mark.parametrize("link", link)
-def test_guest_can_add_product_to_cart_with_different_offer_numbers(browser, link: str) -> None:
+@pytest.mark.need_review
+def test_guest_can_add_product_to_basket(browser, link: str) -> None:
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.add_to_cart(True)
@@ -39,9 +42,16 @@ def test_guest_can_add_non_promo_product_to_cart(browser) -> None:
     product_page.should_check_overall_cost()
 
     #Плюсы наследования: пример
+@pytest.mark.need_review
 def test_guest_should_see_login_link_on_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.need_review
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.guest_go_home_basket_wait()
