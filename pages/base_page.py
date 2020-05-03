@@ -1,6 +1,6 @@
 import math
 from telnetlib import EC
-
+from .locators import BasePageLocators
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
@@ -57,3 +57,11 @@ class BasePage():
             return False
 
         return True
+
+    #Плюсы наследования: пример
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+        link.click()
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"

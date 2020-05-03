@@ -12,3 +12,6 @@ class MainPage(BasePage):
         assert self.is_element_present(*MainPageLocators.LOGIN_LINK), \
             "Login link is not presented"
 
+    #Плюсы наследования: пример
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)

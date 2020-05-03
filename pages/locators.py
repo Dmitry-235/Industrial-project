@@ -16,3 +16,8 @@ class ProductPageLocators:
     PRICE_VALUE = (By.CLASS_NAME, "price_color")
     PRODUCT_NAME = (By.TAG_NAME, "h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
+
+    #Плюсы наследования: пример
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
