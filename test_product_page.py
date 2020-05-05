@@ -1,5 +1,4 @@
-from datetime import time
-
+import time
 import pytest
 
 from pages.basket_page import BasketPage
