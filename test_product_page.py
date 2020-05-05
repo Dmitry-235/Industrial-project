@@ -55,3 +55,9 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = BasketPage(browser, link)
     page.open()
     page.guest_go_home_basket_wait()
+
+def test_should_see_product_basket_at_home_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/ru/"
+    page = BasketPage(browser, link)
+    page.open()
+    page.should_be_home_basket_link()

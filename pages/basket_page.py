@@ -6,3 +6,6 @@ class BasketPage(BasePage):
         login_link = self.browser.find_element(*BasketPageLocators.BUTTON_BASKET)
         login_link.click()
 
+    def should_be_home_basket_link(self):
+        assert self.is_element_present(*BasketPageLocators.BUTTON_BASKET), \
+            "Basket link is not presented"
