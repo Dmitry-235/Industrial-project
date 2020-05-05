@@ -1,22 +1,35 @@
+from datetime import time
+
 import pytest
 
 from pages.basket_page import BasketPage
+from pages.login_page import LoginPage
 from pages.product_page import ProductPage
 
-link = ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"]
+class TestUserAddToBasketFromProductPage:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
+        self.page = LoginPage(browser, link)
+        self.page.open()
+        email = str(time.time()) + "@email.ru"
+        password = str(time.time())
+        self.page.register_new_user(email, password)
+        self.page.should_be_authorized_user()
 
-@pytest.mark.parametrize("link", link)
-@pytest.mark.need_review
-def test_user_can_add_product_to_basket(browser, link: str) -> None:
-    product_page = ProductPage(browser, link)
-    product_page.open()
-    product_page.add_to_cart(True)
-    product_page.should_be_present_in_cart()
-    product_page.should_check_overall_cost()
+    @pytest.mark.need_review
+    def test_user_can_add_product_to_basket(browser: str) -> None:
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+        product_page = ProductPage(browser, link)
+        product_page.open()
+        product_page.add_to_cart(True)
+        product_page.should_be_present_in_cart()
+        product_page.should_check_overall_cost()
 
-@pytest.mark.parametrize("link", link)
+
 @pytest.mark.need_review
-def test_guest_can_add_product_to_basket(browser, link: str) -> None:
+def test_guest_can_add_product_to_basket(browser: str) -> None:
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.add_to_cart(True)
