@@ -16,8 +16,14 @@ class TestUserAddToBasketFromProductPage:
         self.page.register_new_user(email, password)
         self.page.should_be_authorized_user()
 
+    def test_user_cant_see_success_message(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+        product_page = ProductPage(browser, link)
+        product_page.open()
+        product_page.should_not_be_success_message()
+
     @pytest.mark.need_review
-    def test_user_can_add_product_to_basket(browser: str) -> None:
+    def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
         product_page = ProductPage(browser, link)
         product_page.open()
@@ -27,7 +33,7 @@ class TestUserAddToBasketFromProductPage:
 
 
 @pytest.mark.need_review
-def test_guest_can_add_product_to_basket(browser: str) -> None:
+def test_guest_can_add_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
     product_page = ProductPage(browser, link)
     product_page.open()
@@ -35,7 +41,7 @@ def test_guest_can_add_product_to_basket(browser: str) -> None:
     product_page.should_be_present_in_cart()
     product_page.should_check_overall_cost()
 
-def test_guest_can_add_non_promo_product_to_cart(browser) -> None:
+def test_guest_can_add_non_promo_product_to_cart(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
     product_page = ProductPage(browser, link)
     product_page.open()

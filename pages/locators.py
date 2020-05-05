@@ -14,6 +14,7 @@ class LoginPageLocators():
     REGISTER_FORM_BUTTON = (By.CSS_SELECTOR, "button[name = registration_submit]")
 
 class ProductPageLocators:
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alert-success:first-child')
     BUTTON_ADD_TO_CART = (By.CLASS_NAME, "btn-add-to-basket")
     ALERT_ADDED_TO_CART = (By.CSS_SELECTOR, "div.alertinner strong")
     ALERT_CART_STATUS = (By.CSS_SELECTOR, ".alert-noicon.alert-info p")
