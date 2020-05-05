@@ -13,15 +13,6 @@ class LoginPageLocators():
     REGISTER_FORM_PASSWORD_2 = (By.CSS_SELECTOR, "#id_registration-password2")
     REGISTER_FORM_BUTTON = (By.CSS_SELECTOR, "button[name = registration_submit]")
 
-class ProductPageLocators:
-    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '.alert-success:first-child')
-    BUTTON_ADD_TO_CART = (By.CLASS_NAME, "btn-add-to-basket")
-    ALERT_ADDED_TO_CART = (By.CSS_SELECTOR, "div.alertinner strong")
-    ALERT_CART_STATUS = (By.CSS_SELECTOR, ".alert-noicon.alert-info p")
-    PRICE_VALUE = (By.CLASS_NAME, "price_color")
-    PRODUCT_NAME = (By.TAG_NAME, "h1")
-    PRODUCT_PRICE = (By.CSS_SELECTOR, "p.price_color")
-
     #Плюсы наследования: пример
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
@@ -29,5 +20,17 @@ class BasePageLocators():
     BASKET_LINK = (By.CSS_SELECTOR, ".basket-mini a")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
-class BasketPageLocators:
-    BUTTON_BASKET = (By.XPATH, '//*[@id="default"]/header/div[1]/div/div[2]/span/a')
+class ProductPageLocators():
+    ADD_TO_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
+    BOOK_NAME = (By.TAG_NAME, ".product_main > h1")
+    BOOK_NAME_IN_BASKET = (By.CSS_SELECTOR, "#messages .alert-success:nth-child(1) > .alertinner > strong")
+
+    BASKETS_PRICE = (By.CSS_SELECTOR, ".alert-info .alertinner p strong")
+    BOOK_PRICE_IN_MSG = (By.CSS_SELECTOR,".basket-mini")
+    BOOK_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
+
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success:nth-child(1) > .alertinner")
+
+class BasketPageLocators():
+    BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
+    BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")

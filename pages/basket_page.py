@@ -1,11 +1,14 @@
 from .base_page import BasePage
-from pages.locators import BasketPageLocators
+from .locators import BasketPageLocators
+
 
 class BasketPage(BasePage):
-    def guest_go_home_basket_wait(self):
-        login_link = self.browser.find_element(*BasketPageLocators.BUTTON_BASKET)
-        login_link.click()
 
-    def should_be_home_basket_link(self):
-        assert self.is_element_present(*BasketPageLocators.BUTTON_BASKET), \
-            "Basket link is not presented"
+    def should_be_empty_baskets_message(self):
+        baskets_message = self.browser.find_element(*BasketPageLocators.BASKET_MESSAGE).text
+        empty_message = "Your basket is empty."
+        assert baskets_message.find(empty_message) != -1, "No empty message, but it should be"
+
+    def should_not_be_items_in_basket(self):
+        assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS) == True,\
+            "Items in basket are presented, but should not be"
